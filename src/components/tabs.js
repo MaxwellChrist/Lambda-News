@@ -57,14 +57,14 @@ const tabsAppender = (selector) => {
       // console.log(res.data.topics);
       const parent2 = document.querySelector(selector);
       const array = res.data.topics;
-      console.log(array);
+      // console.log(array);
       parent2.appendChild(Tabs(array));
 
     })
     .catch(err => {
       console.log(err);
     })
-    .finally(() => console.log("done"))
+    // .finally(() => console.log("done"))
 }
 
 export { Tabs, tabsAppender }

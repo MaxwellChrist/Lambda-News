@@ -11,7 +11,9 @@ const Header = (title, date, temp) => {
   //    <span class="temp">{ temp }</span>
   //  </div>
   //
-  const header = document.createElement("header");
+
+  console.log(title, date, temp);
+  const header = document.createElement("div");
   const spanDate = document.createElement("span");
   const heading = document.createElement("h1");
   const spanTemp = document.createElement("span");
@@ -20,6 +22,8 @@ const Header = (title, date, temp) => {
   spanDate.classList.add("date");
   spanTemp.classList.add("temp");
 
+  // spanDate.textContent = document.querySelector("title").textContent;
+  // heading.textContent = document.querySelector("title").textContent;
   spanDate.textContent = date;
   heading.textContent = title;
   spanTemp.textContent = temp;
@@ -27,9 +31,15 @@ const Header = (title, date, temp) => {
   header.appendChild(spanDate);
   header.appendChild(heading);
   header.appendChild(spanTemp);
+
+  // const one = header.querySelector('div.header>h1.textContent');
   
   return header
 }
+
+// const one = header.querySelector('div.header>h1.textContent');
+// const two = header.querySelector('div.header>span.date');
+// const three = header.querySelector('div.header>span.temp');
 
 const headerAppender = (selector) => {
   // TASK 2
@@ -40,8 +50,10 @@ const headerAppender = (selector) => {
   //
   // console.log(selector);
   const parent = document.querySelector(selector);
-  const child = Header("Lambda Times", "February 11th, 2022", "45" + "\xB0");
-  parent.appendChild(child);
+  // console.log(parent);
+  // const child = Header("Lambda Times", "February 11th, 2022", "45" + "\xB0");
+    // const child = Header(one, selector.heading, selector.spanTemp);
+    parent.appendChild(Header("Lambda Times", "February 11th, 2022", "45" + "\xB0"));
 }
 
 export { Header, headerAppender }
