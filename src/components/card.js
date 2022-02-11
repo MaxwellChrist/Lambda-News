@@ -1,5 +1,4 @@
-// const Card = (article, { bootstrap, javascript, jquery, node, technology } ) => {
-  const Card = (article ) => {
+const Card = (article ) => {
   // TASK 5
   // ---------------------
   // Implement this function, which should return the markup you see below.
@@ -18,8 +17,6 @@
   //   </div>
   // </div>
   //
-
-  // console.log(bootstrap, javascript, jquery, node, technology);
 
   const card = document.createElement("div");
   const headline = document.createElement("div");
@@ -43,23 +40,12 @@
   imageContainer.appendChild(image);
   author.appendChild(authorName);
 
+  card.addEventListener("click", () =>  {
+    console.log(headline.textContent);
+  })
+
   return card
 }
-
-// const cardMaker = ({ bootstrap, javascript, jquery, node, technology }) => {
-//   console.log(language);
-  // bootstrap.forEach(x) => {
-  //   x.
-  // }
-// }
-// cardMaker();
-
-// const languages = (data) => {
-//   console.log(data);
-// }
-
-
-
 
 import axios from 'axios';
 const cardAppender = (selector) => {
@@ -104,16 +90,38 @@ const cardAppender = (selector) => {
 
   axios.get(`http://localhost:5000/api/articles`)
     .then(res => {
-
       const parent3 = document.querySelector(selector);
-      const data = res.data.articles.javascript[0];
-      parent3.appendChild(Card(data));
-      
+
+      const js = res.data.articles.javascript;
+      // console.log(js);
+      for (let i = 0; i < js.length; i++) {
+        parent3.appendChild(Card(js[i]));
+      }
+      const bootstrap = res.data.articles.bootstrap;
+      // console.log(bootstrap);
+      for (let i = 0; i < bootstrap.length; i++) {
+        parent3.appendChild(Card(bootstrap[i]));
+      }
+      const node = res.data.articles.node;
+      // console.log(node);
+      for (let i = 0; i < node.length; i++) {
+        parent3.appendChild(Card(node[i]));
+      }
+      const jquery = res.data.articles.jquery;
+      // console.log(jquery);
+      for (let i = 0; i < jquery.length; i++) {
+        parent3.appendChild(Card(jquery[i]));
+      }
+      const technology = res.data.articles.technology;
+      // console.log(technology);
+      for (let i = 0; i < technology.length; i++) {
+        parent3.appendChild(Card(technology[i]));
+      }
     })
     .catch(err => {
       console.log(err);
     })
-    // .finally(() => console.log("done"))
+    .finally(() => console.log("done"))
 }
 
 export { Card, cardAppender }
