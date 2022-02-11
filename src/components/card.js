@@ -1,4 +1,4 @@
-console.log("this is a test");
+// console.log("this is a test");
 
 const Card = (article) => {
   // TASK 5
