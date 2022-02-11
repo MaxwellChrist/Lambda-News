@@ -42,6 +42,8 @@ const Tabs = (topics) => {
   return topic
 }
 
+const entry = document.querySelector(".cards-container");
+
 import axios from 'axios';
 const tabsAppender = (selector) => {
   // TASK 4

@@ -1,4 +1,5 @@
-const Card = (article) => {
+// const Card = (article, { bootstrap, javascript, jquery, node, technology } ) => {
+  const Card = (article ) => {
   // TASK 5
   // ---------------------
   // Implement this function, which should return the markup you see below.
@@ -17,6 +18,8 @@ const Card = (article) => {
   //   </div>
   // </div>
   //
+
+  // console.log(bootstrap, javascript, jquery, node, technology);
 
   const card = document.createElement("div");
   const headline = document.createElement("div");
@@ -43,14 +46,24 @@ const Card = (article) => {
   return card
 }
 
-// function cardMaker({ headline, authorName, authorPhoto }) {
-function cardMaker(data2) {
-  console.log(data2);
-}
+// const cardMaker = ({ bootstrap, javascript, jquery, node, technology }) => {
+//   console.log(language);
+  // bootstrap.forEach(x) => {
+  //   x.
+  // }
+// }
+// cardMaker();
+
+// const languages = (data) => {
+//   console.log(data);
+// }
+
+
 
 
 import axios from 'axios';
 const cardAppender = (selector) => {
+
   // TASK 6
   // ---------------------
   // Implement this function that takes a css selector as its only argument.
@@ -59,16 +72,41 @@ const cardAppender = (selector) => {
   // Create a card from each and every article object in the response, using the Card component.
   // Append each card to the element in the DOM that matches the selector passed to the function.
   //
+  // axios.get(`http://localhost:5000/api/articles`)
+  // .then(res => {
+  //   // console.log(res.data.articles);
+  //   // console.log(parent);
+  //   const language = Object.keys(res.data.articles);
+  //   console.log(language);
+  //   const data = res.data.articles;
+  //   // languages(data);
+  //   // cardMaker(language);
+  // })
+  // .catch(err => {
+  //   console.log(err);
+  // })
+  // .finally(() => console.log("done"))
+
+  // axios.get(`http://localhost:5000/api/articles`)
+  //   .then(res => {
+  //     console.log(res.data.articles.text);
+  //     const languages = Object.keys(res.data.articles);
+  //     // console.log(languages);
+  //     languages.forEach( (x) => {
+  //       // console.log(x);
+  //     })
+
+  //   })
+  //   .catch(err => {
+  //     console.log(err);
+  //   })
+  //   .finally(() => console.log("done"))
+
   axios.get(`http://localhost:5000/api/articles`)
     .then(res => {
-      // console.log(res.data.articles);
-
-      // cardMaker(data);
 
       const parent3 = document.querySelector(selector);
-      const data2 = res.data.articles;
       const data = res.data.articles.javascript[0];
-      // console.log(array);
       parent3.appendChild(Card(data));
       
     })
@@ -77,12 +115,5 @@ const cardAppender = (selector) => {
     })
     // .finally(() => console.log("done"))
 }
-
-// const programList = (data2) => {
-//   console.log(data2);
-
-// }
-
-
 
 export { Card, cardAppender }
