@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 const Card = (article ) => {
   const card = document.createElement("div");
   const headline = document.createElement("div");
@@ -28,7 +30,6 @@ const Card = (article ) => {
   return card
 }
 
-import axios from 'axios';
 const cardAppender = (selector) => {
   axios.get(`http://localhost:5000/api/articles`)
     .then(res => {

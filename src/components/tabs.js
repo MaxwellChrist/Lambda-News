@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 const Tabs = (topics) => {
   const topic = document.createElement("div");
   const tab1 = document.createElement("div");
@@ -29,8 +31,6 @@ const Tabs = (topics) => {
 }
 
 const entry = document.querySelector(".cards-container");
-
-import axios from 'axios';
 const tabsAppender = (selector) => {
   axios.get(`http://localhost:5000/api/topics`)
     .then(res => {
