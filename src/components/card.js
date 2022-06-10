@@ -34,26 +34,21 @@ const cardAppender = (selector) => {
   axios.get(`http://localhost:5000/api/articles`)
     .then(res => {
       const parent3 = document.querySelector(selector);
+      function loopAppend(item) {
+        for (let i = 0; i < item.length; i++) {
+          parent3.appendChild(Card(item[i]));
+        }
+      }
       const js = res.data.articles.javascript;
-      for (let i = 0; i < js.length; i++) {
-        parent3.appendChild(Card(js[i]));
-      }
+      loopAppend(js)
       const bootstrap = res.data.articles.bootstrap;
-      for (let i = 0; i < bootstrap.length; i++) {
-        parent3.appendChild(Card(bootstrap[i]));
-      }
+      loopAppend(bootstrap)
       const node = res.data.articles.node;
-      for (let i = 0; i < node.length; i++) {
-        parent3.appendChild(Card(node[i]));
-      }
+      loopAppend(node)
       const jquery = res.data.articles.jquery;
-      for (let i = 0; i < jquery.length; i++) {
-        parent3.appendChild(Card(jquery[i]));
-      }
+      loopAppend(jquery)
       const technology = res.data.articles.technology;
-      for (let i = 0; i < technology.length; i++) {
-        parent3.appendChild(Card(technology[i]));
-      }
+      loopAppend(technology)
     })
     .catch(err => {
       console.log(err);
