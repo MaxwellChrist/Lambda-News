@@ -33,22 +33,13 @@ const Card = (article ) => {
 const cardAppender = (selector) => {
   axios.get(`http://localhost:5000/api/articles`)
     .then(res => {
-      const parent3 = document.querySelector(selector);
-      function loopAppend(item) {
-        for (let i = 0; i < item.length; i++) {
-          parent3.appendChild(Card(item[i]));
+      let topic = Object.values(res.data.articles)
+      const parent = document.querySelector(selector);
+      topic.forEach((x) => {
+        for (let i = 0; i < x.length; i++) {
+          parent.appendChild(Card(x[i]));
         }
-      }
-      const js = res.data.articles.javascript;
-      loopAppend(js)
-      const bootstrap = res.data.articles.bootstrap;
-      loopAppend(bootstrap)
-      const node = res.data.articles.node;
-      loopAppend(node)
-      const jquery = res.data.articles.jquery;
-      loopAppend(jquery)
-      const technology = res.data.articles.technology;
-      loopAppend(technology)
+      }) 
     })
     .catch(err => {
       console.log(err);
